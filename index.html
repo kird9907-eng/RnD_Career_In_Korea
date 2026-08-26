@@ -552,8 +552,8 @@ body.search-active .tab-bar{ display:none; }
    ============================================================ */
 @media (max-width: 860px){
   :root{ --header-h:6rem; --tabbar-h:5rem; }
-  .site-header{ padding:0 var(--sp-3); gap:var(--sp-2); }
-  .brand-text span{ display:none; }
+  .site-header{ padding:0 var(--sp-2); gap:.6rem; }
+  .brand-text{ display:none; }
   .lang-option{ padding:.7rem 1rem; font-size:1.2rem; }
   .search-status{ font-size:1.3rem; }
   main{ padding-left:var(--sp-3); padding-right:var(--sp-3); }
@@ -563,6 +563,12 @@ body.search-active .tab-bar{ display:none; }
   .brand-badge{ width:3.2rem; height:3.2rem; font-size:1.1rem; }
   .tab-btn{ padding:0 1.2rem; font-size:1.4rem; }
   h1{ font-size:2.2rem; }
+  .lang-switcher{ padding:.2rem; }
+  .lang-option{ padding:.6rem .8rem; font-size:1.1rem; }
+}
+@media (max-width: 400px){
+  .search-box{ padding:.6rem .8rem; }
+  #search-input::placeholder{ font-size:1.3rem; }
 }
 
 /* ============================================================
