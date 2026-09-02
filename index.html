@@ -118,7 +118,7 @@ body{
   color:var(--text-black); background:var(--canvas-warm); letter-spacing:-.01em;
   word-break:keep-all; overflow-wrap:break-word; overflow-x:hidden;
 }
-h1,h2,h3,h4{ font-family:var(--font-body); margin:0 0 var(--sp-3); color:var(--green-brand); line-height:1.35; }
+h1,h2,h3,h4{ font-family:var(--font-body); margin:0 0 var(--sp-3); color:var(--green-brand); line-height:1.35; text-wrap:balance; }
 h1{ font-size:3.4rem; font-weight:800; letter-spacing:-.01em; color:var(--green-brand); }
 h2{ font-size:2.2rem; font-weight:700; }
 h3{ font-size:1.8rem; font-weight:700; }
@@ -309,7 +309,7 @@ body.search-active .tab-bar{ display:none; }
 .notice-card p{ color:var(--text-black); }
 .notice-card strong{ color:var(--green-brand); }
 .notice-eyebrow{ background:#cfe3d9; color:var(--green-brand); }
-.notice-headline{ font-size:2rem; font-weight:800; letter-spacing:-.01em; color:var(--green-brand); margin-bottom:1rem; }
+.notice-headline{ font-size:2rem; font-weight:800; letter-spacing:-.01em; color:var(--green-brand); margin-bottom:1rem; text-wrap:balance; }
 .notice-closing{ margin-top:1.2rem; margin-bottom:0; }
 .card.dark{ background:var(--green-house); color:#fff; }
 .card.dark p, .card.dark li{ color:var(--text-white-soft); }
@@ -367,7 +367,7 @@ body.search-active .tab-bar{ display:none; }
   background:var(--tag-tint, var(--amber)); padding:.35rem 1.2rem; border-radius:var(--radius-pill); margin-bottom:.8rem;
   letter-spacing:0;
 }
-.program-subtitle{ font-size:1.55rem; font-weight:700; color:var(--text-black); margin-bottom:.6rem; word-break:keep-all; overflow-wrap:break-word; }
+.program-subtitle{ font-size:1.55rem; font-weight:700; color:var(--text-black); margin-bottom:.6rem; word-break:keep-all; overflow-wrap:break-word; text-wrap:balance; }
 
 .bookmark-toggle{
   display:flex; align-items:center; gap:.7rem; font-size:1.2rem; font-weight:700; color:var(--text-black-soft);
@@ -404,7 +404,7 @@ body.search-active .tab-bar{ display:none; }
 .info-rows .info-row:first-child{ border-top:0; }
 .info-icon{ flex-shrink:0; width:2rem; height:2rem; color:var(--chrome-indigo); display:flex; align-items:center; justify-content:center; margin-top:.1rem; }
 .info-label{ flex:0 0 9rem; font-size:1.25rem; font-weight:700; color:var(--text-black-soft); }
-.info-value{ flex:1; font-size:1.45rem; color:var(--text-black); line-height:1.55; }
+.info-value{ flex:1; font-size:1.45rem; color:var(--text-black); line-height:1.55; white-space:pre-line; }
 .row-badges{ display:inline-flex; flex-wrap:wrap; gap:.6rem; }
 .row-badge{
   display:inline-block; font-size:1.2rem; font-weight:700; padding:.4rem 1.2rem; border-radius:var(--radius-pill);
@@ -418,6 +418,22 @@ body.search-active .tab-bar{ display:none; }
   .info-row{ flex-wrap:wrap; }
   .info-label{ flex-basis:100%; }
 }
+
+/* 진행 절차 — 색상 없이, 연결선이 있는 세로 타임라인으로 정리 */
+.process-row .info-label{ margin-top:.2rem; }
+.process-steps{ position:relative; flex:1; display:flex; flex-direction:column; gap:1.3rem; }
+.process-steps::before{
+  content:""; position:absolute; left:1.09rem; top:.3rem; bottom:.3rem; width:1px; background:var(--border-soft);
+}
+.process-step{
+  position:relative; display:flex; align-items:flex-start; gap:1.2rem;
+}
+.process-step-num{
+  position:relative; z-index:1; flex-shrink:0; width:2.2rem; height:2.2rem; border-radius:50%;
+  background:#fff; border:2px solid var(--text-black-soft); color:var(--text-black);
+  display:flex; align-items:center; justify-content:center; font-weight:700; font-size:1.15rem;
+}
+.process-step-text{ font-size:1.4rem; color:var(--text-black); line-height:1.5; padding-top:.2rem; }
 
 .link-row{ display:flex; flex-wrap:wrap; gap:1rem; margin-top:var(--sp-3); }
 .pill-link{
@@ -643,7 +659,7 @@ body.search-active .tab-bar{ display:none; }
     <li><button class="tab-btn" role="tab" id="tab-btn-grad" aria-selected="false" aria-controls="panel-grad" data-panel="grad">2. 대학원생 프로그램 <span class="count">7</span></button></li>
     <li><button class="tab-btn" role="tab" id="tab-btn-staff" aria-selected="false" aria-controls="panel-staff" data-panel="staff">3. 재직자 프로그램 <span class="count">4</span></button></li>
     <li><button class="tab-btn" role="tab" id="tab-btn-life" aria-selected="false" aria-controls="panel-life" data-panel="life">4. 생활지원서비스 <span class="count">4</span></button></li>
-    <li><button class="tab-btn" role="tab" id="tab-btn-sns" aria-selected="false" aria-controls="panel-sns" data-panel="sns">5. SNS·FAQ</button></li>
+    <li><button class="tab-btn" role="tab" id="tab-btn-sns" aria-selected="false" aria-controls="panel-sns" data-panel="sns">5. SNS·문의 및 지원</button></li>
   </ul>
 </nav>
 
@@ -706,7 +722,6 @@ body.search-active .tab-bar{ display:none; }
               <td><ul>
                 <li class="sf" data-original="R&amp;D 역량강화">R&amp;D 역량강화</li>
                 <li class="sf" data-original="네트워킹">네트워킹</li>
-                <li class="sf" data-original="성과공유회">성과공유회</li>
               </ul></td>
             </tr>
             <tr class="row-lavender">
@@ -715,6 +730,7 @@ body.search-active .tab-bar{ display:none; }
                 <li class="sf" data-original="경력개발 가이드북">경력개발 가이드북</li>
                 <li class="sf" data-original="다문화 연구문화 이러닝">다문화 연구문화 이러닝</li>
                 <li class="sf" data-original="국내정착 경험공유 세미나">국내정착 경험공유 세미나</li>
+                <li class="sf" data-original="성과공유회">성과공유회</li>
               </ul></td>
             </tr>
           </tbody>
@@ -730,20 +746,14 @@ body.search-active .tab-bar{ display:none; }
     </div>
 
     <div class="card searchable-unit">
-      <h2 class="sf" data-original="문의 및 지원">문의 및 지원</h2>
-      <div class="contact-grid">
-        <div class="contact-item">
-          <h3>담당 사업 부서 연락처</h3>
-          <p class="sf" data-original="globaltalent@kird.re.kr"><a href="mailto:globaltalent@kird.re.kr">globaltalent@kird.re.kr</a></p>
-        </div>
-        <div class="contact-item">
-          <h3>수행기관</h3>
-          <p class="sf" data-original="국가과학기술인력개발원(KIRD)">국가과학기술인력개발원(KIRD)</p>
+      <div class="faq-header">
+        <h2 style="margin:0;">자주 묻는 질문 (FAQ)</h2>
+        <div class="faq-toggle-all">
+          <button type="button" id="faq-expand-all" class="faq-toggle-btn">전체 열기</button>
+          <button type="button" id="faq-collapse-all" class="faq-toggle-btn">전체 닫기</button>
         </div>
       </div>
-      <p class="sf" data-original="모든 프로그램은 과학기술정보통신부 이공계 해외연구인력 전주기 정착 지원사업의 일환으로 운영되며, 한국연구재단(NRF)이 관리하고 국가과학기술인력개발원(KIRD)이 수행합니다." style="margin-top:var(--sp-3); font-size:1.4rem; color:var(--text-black-soft);">
-        모든 프로그램은 과학기술정보통신부 「이공계 해외연구인력 전주기 정착 지원사업」의 일환으로 운영되며, 한국연구재단(NRF)이 관리하고 국가과학기술인력개발원(KIRD)이 수행합니다.
-      </p>
+      <div id="faq-list"></div>
     </div>
 
     <div class="card">
@@ -785,7 +795,7 @@ body.search-active .tab-bar{ display:none; }
   <section class="panel" id="panel-life" role="tabpanel" aria-labelledby="tab-btn-life" tabindex="-1" hidden>
     <div class="panel-head">
       <span class="eyebrow">생활지원서비스</span>
-      <h1>비자·생활·정서까지, 어디서든 든든하게</h1>
+      <h1>한국 생활의 모든 순간, 든든하게 함께합니다</h1>
       <p class="lead">이공계 외국인 연구인력의 안정적인 정착을 위해 생활 전반의 어려움을 통합 지원합니다.</p>
     </div>
     <div class="pager-shell" id="pager-life" data-cat="life"></div>
@@ -829,14 +839,20 @@ body.search-active .tab-bar{ display:none; }
     </div>
 
     <div class="card searchable-unit">
-      <div class="faq-header">
-        <h2 style="margin:0;">자주 묻는 질문 (FAQ)</h2>
-        <div class="faq-toggle-all">
-          <button type="button" id="faq-expand-all" class="faq-toggle-btn">전체 열기</button>
-          <button type="button" id="faq-collapse-all" class="faq-toggle-btn">전체 닫기</button>
+      <h2 class="sf" data-original="문의 및 지원">문의 및 지원</h2>
+      <div class="contact-grid">
+        <div class="contact-item">
+          <h3>담당 사업 부서 연락처</h3>
+          <p class="sf" data-original="globaltalent@kird.re.kr"><a href="mailto:globaltalent@kird.re.kr">globaltalent@kird.re.kr</a></p>
+        </div>
+        <div class="contact-item">
+          <h3>수행기관</h3>
+          <p class="sf" data-original="국가과학기술인력개발원(KIRD)">국가과학기술인력개발원(KIRD)</p>
         </div>
       </div>
-      <div id="faq-list"></div>
+      <p class="sf" data-original="모든 프로그램은 과학기술정보통신부 이공계 해외연구인력 전주기 정착 지원사업의 일환으로 운영되며, 한국연구재단(NRF)이 관리하고 국가과학기술인력개발원(KIRD)이 수행합니다." style="margin-top:var(--sp-3); font-size:1.4rem; color:var(--text-black-soft);">
+        모든 프로그램은 과학기술정보통신부 「이공계 해외연구인력 전주기 정착 지원사업」의 일환으로 운영되며, 한국연구재단(NRF)이 관리하고 국가과학기술인력개발원(KIRD)이 수행합니다.
+      </p>
     </div>
   </section>
 
@@ -891,11 +907,11 @@ const DATA = {
         {title:"진로·비자·채용 정보를 알고 싶은 분", desc:"한국에서의 경력개발에 필요한 다양한 정보를 한 번에 확인하며 취업 준비를 시작할 수 있습니다."}
       ],
       process:"신청 대상 확인 → 접수 창구 통해 신청 → 담당자 안내를 통한 사전 준비 → 교육 진행 → 만족도 조사",
-      footnote:"* 추후 진행되는 프로그램의 구성과 일정 변경될 수 있습니다.",
+      footnote:"* 추후 진행되는 프로그램의 구성과 일정 변경될 수 있습니다. 2027년 오프라인 교육은 전국 대학을 대상으로 진행될 예정입니다.",
       rows:[
         ["운영 일정","26년 10월 23일 : 5기(온라인) / 26년 11월 5일 : 6기(오프라인, 서울)"],
-        ["신청 대상","4대 과학기술원, UST 및 K-STAR 비자 트랙 선정 대학의 이공계 외국인 대학원생"],
-        ["신청 방법","신청 시기에 맞춰 사업 SNS 및 카카오톡 오픈채팅방에 공지"]
+        ["신청 대상","(온라인) 이공계 외국인 대학원생\n(오프라인) 4대 과학기술원, UST 및 K-STAR 비자 트랙 선정 대학의 이공계 외국인 대학원생"],
+        ["신청 방법","신청 시기에 맞추어 사업 SNS 및 카카오톡 오픈채팅방에 공지"]
       ],
       links:[
         {label:"카드뉴스 보러가기", url:"https://k-club.kird.re.kr/bbs/BBSMSTR_000000000784/view.do?nttId=B000000007009Ts1pY8"},
@@ -925,7 +941,7 @@ const DATA = {
         {title:"실무역량을 키우고 싶은 분", desc:"현장 실습과 멘토링을 통해 연구자로서 필요한 실무역량과 업무 경험을 쌓을 수 있습니다."},
         {title:"한국 취업을 준비하는 분", desc:"연구현장 경험을 바탕으로 자신의 강점을 확인하고 향후 취업과 경력개발을 준비하고 싶은 경우에 도움이 됩니다."}
       ],
-      process:"신청 모집 → 취업 역량 강화 교육 → 우수 교육생 선발 → 기업과 면접 → 인턴십 활동(3개월) → 종료",
+      process:"신청 모집 → 취업 역량 강화 교육(50명 내외 선발) → 우수 교육생 선발(10명 내외 선발) → 기업과 면접(우수 교육생에게 면접 우선권 제공, 그 후 전체 교육 참가자들 대상 참여 기업의 서류 검토 및 인터뷰 기회 제공) → 인턴십 활동(3개월) → 종료",
       footnote:"* 차년도에 진행되는 프로그램 구성과 일정은 변경될 수 있습니다.",
       rows:[
         ["운영 일정","2026년 모집 종료 (2027년 모집 예정)"],
@@ -954,7 +970,7 @@ const DATA = {
         {title:"연구계획서 작성역량을 높이고 싶은 분", desc:"전문가 멘토링과 워크숍을 통해 연구계획서를 직접 작성하며 실무역량을 키울 수 있습니다."},
         {title:"팀 연구와 협업을 경험하고 싶은 분", desc:"내·외국인 연구자와 함께 연구과제를 수행하며 협업능력과 연구기획 역량을 함께 높이고 싶은 경우에 적합합니다."}
       ],
-      process:"연구팀 공모 → 선정 → 이러닝 및 집합교육 → 연구 주제 설정 및 연구계획서 작성 멘토링 → 최종 평가 → 성과공유회",
+      process:"연구팀 공모 → 선정(8개팀 내외) → 이러닝 및 집합교육(7월, 8월, 9월) → 연구 주제 설정 및 연구계획서 작성 멘토링(7월, 8월, 9월) → 최종 평가(10월) → 성과공유회(12월, 우수팀 대상 시상)",
       footnote:"* 차년도에 진행되는 프로그램 구성과 일정은 변경될 수 있습니다.",
       rows:[
         ["운영 일정","2026년 모집종료 (2027년 모집 예정)"],
@@ -1007,7 +1023,7 @@ const DATA = {
       process:"신청 대상 확인 → 접수 창구 통해 신청 → 담당자 안내를 통한 사전 준비 → 교육 진행 → 만족도 조사",
       rows:[
         ["운영 일정","2026년 11월 12일 (2기 예정, 오프라인·서울)"],
-        ["신청 방법","신청 시기에 맞춰 사업 SNS 및 카카오톡 오픈채팅방에 공지"]
+        ["신청 방법","신청 시기에 맞추어 사업 SNS 및 카카오톡 오픈채팅방에 공지"]
       ], links:[]
     },
     {
@@ -1026,12 +1042,12 @@ const DATA = {
       ], links:[]
     },
     {
-      tag:"공유회", title:"성과공유회", subtitle:"우수 연구성과 공유",
-      desc:"정착과 커리어에 필요한 실질적 노하우를 나누고 우수 성과를 공유합니다.",
+      tag:"공유회", title:"성과공유회", subtitle:"우수 연구성과 공유 및 네트워킹 확대",
+      desc:"과학기술분야 우수 해외인재 유치부터 국내 정착 지원까지, 유관기관에서 개별 운영 중인 사업의 연구 성과를 공유하고 사업 참여 연구자, 유관기관, 정책입안자 간 네트워킹을 확대합니다.",
       catchphrases:[
         {title:"다른 연구자의 우수 성과가 궁금한 분", desc:"다양한 분야의 연구성과와 사례를 살펴보며 새로운 연구 아이디어와 인사이트를 얻고 싶은 경우에 적합합니다."},
         {title:"연구성과를 함께 나누고 싶은 분", desc:"자신의 연구 경험과 성과를 다른 연구자들과 공유하며 의미 있는 교류의 기회를 만들고 싶은 경우에 도움이 됩니다."},
-        {title:"연구자들과 새로운 기회를 찾고 싶은 분", desc:"연구성과 공유를 계기로 다른 연구자와 소통하고 향후 협업과 네트워크의 가능성을 넓히고 싶은 경우에 추천합니다."}
+        {title:"유관기관·정책입안자와 네트워킹하고 싶은 분", desc:"사업 참여 연구자뿐 아니라 유관기관, 정책입안자와도 소통하며 향후 협업과 네트워크의 가능성을 넓히고 싶은 경우에 추천합니다."}
       ],
       rows:[
         ["운영 일정","2026년 12월 17일(목)"],
@@ -1050,7 +1066,7 @@ const DATA = {
       process:"신청 대상 확인 → 접수 창구 통해 신청 → 담당자 사전 안내 → 교육진행 → 만족도 조사",
       rows:[
         ["운영 일정","2026년 9월 30일(수) 18:00 / 10월 28일(수) 18:00 / 11월 25일(수) 18:00"],
-        ["신청 방법","신청 시기에 맞춰 사업 SNS 및 카카오톡 오픈채팅방에 공지"]
+        ["신청 방법","신청 시기에 맞추어 사업 SNS 및 카카오톡 오픈채팅방에 공지"]
       ], links:[
         {label:"영상 보러가기 1", url:"https://youtu.be/T2ms3xCPH6c?si=40bgyeIh1vpSXwCC"},
         {label:"영상 보러가기 2", url:"https://youtu.be/51iDGy7kceE?si=aeWHETRQJitqsbJE"},
@@ -1070,7 +1086,7 @@ const DATA = {
       process:"신청 대상 확인 → 접수 창구 통해 신청 → 전문가 답변 제공(이메일) → 만족도 조사",
       rows:[
         ["운영 일정","상시 운영"],
-        ["신청 대상","4대 과기원, UST 및 K-STAR 비자 트랙 선정 대학 대상 이공계 외국인 대학원생 및 재직자"],
+        ["신청 대상","이공계 외국인 연구인력(대학원생, 재직자 모두)"],
         ["신청 방법","신청 링크를 통해 문의 접수"]
       ], links:[{label:"신청하기", url:"https://moaform.com/q/FDXzrm"}]
     },
@@ -1090,6 +1106,23 @@ const DATA = {
       ], links:[{label:"신청하기", url:"https://moaform.com/q/02127L"}]
     },
     {
+      tag:"통역지원", title:"지역 기반 현장 지원 버디", subtitle:"병원, 은행 등 생활 현장 통역 지원",
+      desc:"병원, 은행 등의 현장에 내국인 버디가 동행하여 일상 수준의 통역을 지원합니다.",
+      catchphrases:[
+        {title:"한국 생활이 아직 낯선 분", desc:"병원·은행 등 일상생활에서 혼자 처리하기 어려운 행정처리 업무를 현장에서 도움받고 싶은 경우에 적합합니다."},
+        {title:"현장 통역과 안내가 필요한 분", desc:"언어와 절차 때문에 어려움을 겪는 생활 현장에서 버디의 도움을 받아 보다 편리하게 이용하고 싶은 경우에 도움이 됩니다."},
+        {title:"지역에서 직접적인 도움이 필요한 분", desc:"온라인 정보만으로 해결하기 어려운 생활 문제를 지역의 내국인 버디와 함께 직접 해결하고 싶은 경우에 활용할 수 있습니다."}
+      ],
+      process:"신청 대상 확인 → 접수 창구 통해 신청(희망 시간 및 지원 요청 사항 상세 기술) → 버디 매칭 안내 → 내국인 버디 현장 동행하여 지원 → 만족도 조사",
+      reference:"병원, 은행 등 행정 업무 처리 시 동행하여 일상생활 수준의 통역을 지원 (진료 상담, 계약 내용 통역 등 민감한 내용은 지원하지 않습니다)",
+      footnote:"※ 내국인 버디가 모집되지 않은 지역은 지원이 불가할 수 있습니다.",
+      rows:[
+        ["운영 일정","상시 운영"],
+        ["신청 대상","4대 과학기술원, UST 및 K-STAR 비자 트랙 선정 대학 대상 이공계 외국인 대학원생 및 재직자"],
+        ["신청 방법","신청 링크를 통해 버디 신청"]
+      ], links:[{label:"신청하기", url:"https://moaform.com/q/FDXzrm"}]
+    },
+    {
       tag:"콘텐츠", title:"생활정착 가이드북·AI 챗봇", subtitle:"정확한 생활정보 상시 제공",
       desc:"신규 입국, 가족 동반, 장기 거주 등 대상별 맞춤 정보와 영어로 이용 가능한 지역 정보를 제공합니다 (연2회 업데이트).",
       catchphrases:[
@@ -1103,28 +1136,13 @@ const DATA = {
         {label:"가이드북 보러가기", url:"https://k-club.kird.re.kr/bbs/BBSMSTR_000000000784/view.do?nttId=B000000006231Pk7fY6"},
         {label:"AI 챗봇 구독하기", url:"http://pf.kakao.com/_IMxmtn"}
       ]
-    },
-    {
-      tag:"통역지원", title:"지역 기반 현장 지원 버디", subtitle:"병원, 은행 등 생활 현장 통역 지원",
-      desc:"병원, 은행 등의 현장에 내국인 버디가 동행하여 일상 수준의 통역을 지원합니다. ※ 내국인 버디가 모집되지 않은 지역은 지원이 불가할 수 있습니다.",
-      catchphrases:[
-        {title:"한국 생활이 아직 낯선 분", desc:"병원·은행 등 일상생활에서 혼자 처리하기 어려운 행정처리 업무를 현장에서 도움받고 싶은 경우에 적합합니다."},
-        {title:"현장 통역과 안내가 필요한 분", desc:"언어와 절차 때문에 어려움을 겪는 생활 현장에서 버디의 도움을 받아 보다 편리하게 이용하고 싶은 경우에 도움이 됩니다."},
-        {title:"지역에서 직접적인 도움이 필요한 분", desc:"온라인 정보만으로 해결하기 어려운 생활 문제를 지역의 내국인 버디와 함께 직접 해결하고 싶은 경우에 활용할 수 있습니다."}
-      ],
-      process:"신청 대상 확인 → 접수 창구 통해 신청(희망 시간 및 지원 요청 사항 상세 기술) → 버디 매칭 안내 → 내국인 버디 현장 동행하여 지원 → 만족도 조사",
-      rows:[
-        ["운영 일정","상시 운영"],
-        ["신청 대상","4대 과학기술원, UST 및 K-STAR 비자 트랙 선정 대학 대상 이공계 외국인 대학원생 및 재직자"],
-        ["신청 방법","신청 링크를 통해 버디 신청"]
-      ], links:[{label:"신청하기", url:"https://moaform.com/q/FDXzrm"}]
     }
   ]
 };
 
 const FAQ_ITEMS = [
   {q:"누가 프로그램에 참여할 수 있나요?",
-   html:`국내에 거주하고 있는 <strong>이공계 외국인 대학원생과 연구자</strong>를 주요 대상으로 하며, 프로그램에 따라 <strong>4대 과학기술원 및 K-STAR 비자트랙 선정대학 소속 외국인</strong> 등이 참여할 수 있습니다. 세부 참여 대상은 프로그램별로 다를 수 있으니 각 프로그램의 신청 자격을 확인해 주세요.
+   html:`국내에 거주하고 있는 <strong>이공계 외국인 대학원생과 연구자</strong>를 주요 대상으로 하며, 프로그램에 따라 <strong>전국 정부출연연구기관 및 연구소, 4대 과학기술원 및 K-STAR 비자트랙 선정대학 소속 외국인</strong> 등이 참여할 수 있습니다. 세부 참여 대상은 프로그램별로 다를 수 있으니 각 프로그램의 신청 자격을 확인해 주세요.
     <details class="faq-sub"><summary>4대 과학기술원</summary><p>KAIST(한국과학기술원), GIST(광주과학기술원), DGIST(대구경북과학기술원), UNIST(울산과학기술원)</p></details>
     <details class="faq-sub"><summary>K-STAR 비자트랙 선정대학 (총 32개교)</summary><p>KAIST, DGIST, UNIST, GIST, UST(과학기술연합대학원대학교), 강원대학교, 경북대학교, 경상국립대학교, 경희대학교, 고려대학교, 고려대학교 세종캠퍼스, 동아대학교, 부경대학교, 부산대학교, 서강대학교, 서울대학교, 성균관대학교, 순천향대학교, 아주대학교, 연세대학교, 연세대학교 미래캠퍼스, 인하대학교, 전남대학교, 전북대학교, 제주대학교, 중앙대학교, 충남대학교, 충북대학교, 포항공과대학교(POSTECH), 한국해양대학교, 한양대학교, 한양대학교 ERICA캠퍼스</p></details>`},
   {q:"프로그램은 어디에서 신청하나요?",
@@ -1263,9 +1281,10 @@ function switchPanel(name, {focus=true}={}){
     panel.hidden = !isActive;
     tab.setAttribute('aria-selected', isActive ? 'true':'false');
   });
+  window.scrollTo({top:0, behavior:'auto'});
   if(focus){
     const panel = document.getElementById('panel-'+name);
-    panel.focus({preventScroll:false});
+    panel.focus({preventScroll:true});
   }
 }
 document.querySelectorAll('.tab-btn').forEach(btn=>{
@@ -1420,11 +1439,25 @@ function renderCard(cat, idx){
       </div>`;
   }).join('');
 
-  const processHtml = item.process ? `
-    <div class="info-row">
+  const processSteps = item.process ? item.process.split('→').map(s=>s.trim()).filter(Boolean) : [];
+  const processHtml = processSteps.length ? `
+    <div class="info-row process-row">
       <span class="info-icon">${PROCESS_ICON}</span>
       <span class="info-label">진행 절차</span>
-      <span class="info-value">${highlight(item.process,q)}</span>
+      <div class="process-steps">
+        ${processSteps.map((s,i)=>`
+          <div class="process-step">
+            <span class="process-step-num">${i+1}</span>
+            <span class="process-step-text">${highlight(s,q)}</span>
+          </div>`).join('')}
+      </div>
+    </div>` : '';
+
+  const referenceHtml = item.reference ? `
+    <div class="info-row">
+      <span class="info-icon">${ROW_ICON['기본']}</span>
+      <span class="info-label">참고</span>
+      <span class="info-value">${highlight(item.reference,q)}</span>
     </div>` : '';
 
   const linksHtml = item.links.length ? `<div class="link-row">${item.links.map(l=>
@@ -1466,6 +1499,7 @@ function renderCard(cat, idx){
       <div class="info-rows">
         ${rowsHtml}
         ${processHtml}
+        ${referenceHtml}
       </div>
       ${noteHtml}
       ${linksHtml}
